@@ -7,7 +7,7 @@ function test() {
     throw new SpecificException('Oopsie');
 }
 
-try // NOK {{Avoid using try-catch-finally}}
+try
 {
   $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
 }
@@ -15,9 +15,9 @@ catch(Exception $ex)
 {
   $msg = "Error opening $imgFile for Product $row['Identifier']";
   throw new Exception($msg);
-}
+} // NOK {{Avoid using try-catch-finally}}
 
-try {// NOK {{Avoid using try-catch-finally}}
+try {
     throw new \Exception("Hello");
 } catch(\Exception $e) {
     echo $e->getMessage()." catch in\n";
@@ -25,7 +25,8 @@ try {// NOK {{Avoid using try-catch-finally}}
 } finally {
     echo $e->getMessage()." finally \n";
     throw new \Exception("Bye");
-}
+} // NOK {{Avoid using try-catch-finally}}
+
 //FAILS with this RULE
 /*try {
     throw new \Exception("Hello");

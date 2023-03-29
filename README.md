@@ -12,12 +12,18 @@ Step 1 : prepare local environment
 ---
 
 To launch local environment : please follow https://github.com/green-code-initiative/ecoCode/blob/main/INSTALL.md
-(especially SonarQube configuration part)
+(especially SonarQube configuration part and get generated private token)
 
 Step 2 : send Sonar metrics to local SonarQube
 ---
 
-`mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_SONAR_TOKEN`
+```sh
+./tool_send_to_sonar.sh MY_SONAR_TOKEN
+
+or
+
+mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_SONAR_TOKEN
+```
 
 Step 3 : check errors
 ---

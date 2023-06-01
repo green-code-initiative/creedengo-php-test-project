@@ -7,17 +7,14 @@ function test() {
     throw new SpecificException('Oopsie');
 }
 
-try
-{
-  $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
+try { // NOK {{Avoid using try-catch}}
+    $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
+} catch(Exception $ex) {
+    $msg = "Error opening $imgFile for Product $row['Identifier']";
+    throw new Exception($msg);
 }
-catch(Exception $ex)
-{
-  $msg = "Error opening $imgFile for Product $row['Identifier']";
-  throw new Exception($msg);
-} // NOK {{Avoid using try-catch-finally}}
 
-try {
+try { // NOK {{Avoid using try-catch}}
     throw new \Exception("Hello");
 } catch(\Exception $e) {
     echo $e->getMessage()." catch in\n";
@@ -25,7 +22,7 @@ try {
 } finally {
     echo $e->getMessage()." finally \n";
     throw new \Exception("Bye");
-} // NOK {{Avoid using try-catch-finally}}
+}
 
 //FAILS with this RULE
 /*try {
@@ -34,4 +31,3 @@ try {
     echo $e->getMessage()." catch in\n";
     throw $e;
 }*/
-?>

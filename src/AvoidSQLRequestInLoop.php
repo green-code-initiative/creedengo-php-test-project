@@ -9,6 +9,7 @@ class AvoidFullSQLRequest
     private $query = 'SELECT * FROM Table';
     private $otherQuery = 'SELECT name FROM User';
     private $connection;
+
     public function launchSQLRequest($someCondition)
     {
         $expectedNbOfRequest = 5;
@@ -20,6 +21,7 @@ class AvoidFullSQLRequest
         $this->whileLoop($expectedNbOfRequest, $someCondition);
         $this->emptyLoop();
     }
+
     private function init()
     {
         $this->connection = mysql_connect($this->dbHost, $this->dbUser, $this->dbPass) or die("Unable to Connect to '$dbhost'");
@@ -64,7 +66,7 @@ class AvoidFullSQLRequest
         do {
             $result = mysql_query($this->query); // NOK {{Avoid SQL request in loop}}
 
-            if($someCondition) {
+            if ($someCondition) {
                 $result = mysql_query($this->otherQuery); // NOK {{Avoid SQL request in loop}}
             }
 
@@ -75,6 +77,6 @@ class AvoidFullSQLRequest
 
     private function emptyLoop()
     {
-        for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, $i++);
+        for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, ++$i) ;
     }
 }

@@ -115,7 +115,7 @@ while (count($array) > $i) { // NOK {{Avoid getting the size of the collection i
 
 $i = 0;
 $size = count($array);
-while ($size > $i) { // Compliant
+while ($size> $i) { // Compliant
     var_dump($array[$i]);
     ++$i;
 }

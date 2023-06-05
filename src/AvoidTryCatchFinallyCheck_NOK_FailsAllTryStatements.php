@@ -1,33 +1,37 @@
-
 <?php
 
-class SpecificException extends Exception {}
+class SpecificException extends Exception
+{
+}
 
-function test() {
+function test()
+{
     throw new SpecificException('Oopsie');
 }
 
 try { // NOK {{Avoid using try-catch}}
-    $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
-} catch(Exception $ex) {
-    $msg = "Error opening $imgFile for Product $row['Identifier']";
-    throw new Exception($msg);
+    $file = 'file';
+    $picture = PDF_open_image_file(
+        pdf_new(),
+        "jpeg",
+        $file,
+        "",
+        0
+    ); // This is the original statement, this works on PHP4
+} catch (Exception $e) {
+    echo "Error opening $file : " . $e->getMessage();
+}
+
+try { // NOK {{Avoid using try-catch}}
+    throw new SpecificException("Hello");
+} catch (SpecificException $e) {
+    echo $e->getMessage() . " catch in\n";
+} finally {
+    echo $e->getMessage() . " finally \n";
 }
 
 try { // NOK {{Avoid using try-catch}}
     throw new \Exception("Hello");
-} catch(\Exception $e) {
-    echo $e->getMessage()." catch in\n";
-    throw $e;
-} finally {
-    echo $e->getMessage()." finally \n";
-    throw new \Exception("Bye");
+} catch (\Exception $e) {
+    echo $e->getMessage() . " catch in\n";
 }
-
-//FAILS with this RULE
-/*try {
-    throw new \Exception("Hello");
-} catch(\Exception $e) {
-    echo $e->getMessage()." catch in\n";
-    throw $e;
-}*/

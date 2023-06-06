@@ -1,16 +1,27 @@
 <?php
+
 $a = 1;
 $b = 2;
-function somme() {
+function somme()
+{
     $GLOBALS['b'] = $GLOBALS['a'] + $GLOBALS['b'];
 } // NOK {{Prefer local variables to globals}}
+
 somme();
 echo $b;
 
-function somme2() {
+function somme2()
+{
     global $a, $b;
     $b = $a + $b;
 } // NOK {{Prefer local variables to globals}}
+
 somme2();
 echo $b;
-?>
+
+function somme3($a, $b) // Compliant
+{
+    return $a + $b;
+}
+
+echo somme3($a, $b);

@@ -5,27 +5,27 @@ $array = array('orange', 'banana', 'apple', 'carrot', 'collard', 'pea');
 /**
  * FOR STATEMENTS // RIGHT OPERAND
  */
-for ($i = 0; $i < count($array); ++$i) {  // NOK {{Avoid getting the size of the collection in the loop}}
+for ($i = 0; $i < count($array); ++$i) {
     var_dump($array[$i]);
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $size = count($array);
 for ($i = 0; $i < $size; ++$i) {  // Compliant
     var_dump($array[$i]);
 }
 
-for ($i = 0; $i < sizeof($array); ++$i) {  // NOK {{Avoid getting the size of the collection in the loop}}
+for ($i = 0; $i < sizeof($array); ++$i) {
     var_dump($array[$i]);
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $size = sizeof($array);
 for ($i = 0; $i < $size; ++$i) {  // Compliant
     var_dump($array[$i]);
 }
 
-for ($i = 0; $i < iterator_count(new ArrayIterator($array)); ++$i) {  // NOK {{Avoid getting the size of the collection in the loop}}
+for ($i = 0; $i < iterator_count(new ArrayIterator($array)); ++$i) {
     var_dump($array[$i]);
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $size = iterator_count(new ArrayIterator($array));
 for ($i = 0; $i < $size; ++$i) {  // Compliant
@@ -35,27 +35,27 @@ for ($i = 0; $i < $size; ++$i) {  // Compliant
 /**
  * FOR STATEMENTS // LEFT OPERAND
  */
-for ($i = 0; count($array) > $i; ++$i) {  // NOK {{Avoid getting the size of the collection in the loop}}
+for ($i = 0; count($array) > $i; ++$i) {
     var_dump($array[$i]);
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $size = count($array);
 for ($i = 0; $size > $i; ++$i) {  // Compliant
     var_dump($array[$i]);
 }
 
-for ($i = 0; sizeof($array) > $i; ++$i) {  // NOK {{Avoid getting the size of the collection in the loop}}
+for ($i = 0; sizeof($array) > $i; ++$i) {
     var_dump($array[$i]);
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $size = sizeof($array);
 for ($i = 0; $size > $i; ++$i) {  // Compliant
     var_dump($array[$i]);
 }
 
-for ($i = 0; iterator_count(new ArrayIterator($array)) > $i; ++$i) {  // NOK {{Avoid getting the size of the collection in the loop}}
+for ($i = 0; iterator_count(new ArrayIterator($array)) > $i; ++$i) {
     var_dump($array[$i]);
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $size = iterator_count(new ArrayIterator($array));
 for ($i = 0; $size > $i; ++$i) { // Compliant
@@ -66,10 +66,10 @@ for ($i = 0; $size > $i; ++$i) { // Compliant
  * WHILE STATEMENTS // RIGHT OPERAND
  */
 $i = 0;
-while ($i < count($array)) { // NOK {{Avoid getting the size of the collection in the loop}}
+while ($i < count($array)) {
     var_dump($array[$i]);
     ++$i;
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = count($array);
@@ -79,10 +79,10 @@ while ($i < $size) { // Compliant
 }
 
 $i = 0;
-while ($i < sizeof($array)) { // NOK {{Avoid getting the size of the collection in the loop}}
+while ($i < sizeof($array)) {
     var_dump($array[$i]);
     ++$i;
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = sizeof($array);
@@ -92,10 +92,10 @@ while ($i < $size) { // Compliant
 }
 
 $i = 0;
-while ($i < iterator_count(new ArrayIterator($array))) { // NOK {{Avoid getting the size of the collection in the loop}}
+while ($i < iterator_count(new ArrayIterator($array))) {
     var_dump($array[$i]);
     ++$i;
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = iterator_count(new ArrayIterator($array));
@@ -108,10 +108,10 @@ while ($i < $size) { // Compliant
  * WHILE STATEMENTS // LEFT OPERAND
  */
 $i = 0;
-while (count($array) > $i) { // NOK {{Avoid getting the size of the collection in the loop}}
+while (count($array) > $i) {
     var_dump($array[$i]);
     ++$i;
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = count($array);
@@ -121,10 +121,10 @@ while ($size > $i) { // Compliant
 }
 
 $i = 0;
-while (sizeof($array) > $i) { // NOK {{Avoid getting the size of the collection in the loop}}
+while (sizeof($array) > $i) {
     var_dump($array[$i]);
     ++$i;
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = sizeof($array);
@@ -134,10 +134,10 @@ while ($size > $i) { // Compliant
 }
 
 $i = 0;
-while (iterator_count(new ArrayIterator($array)) > $i) { // NOK {{Avoid getting the size of the collection in the loop}}
+while (iterator_count(new ArrayIterator($array)) > $i) {
     var_dump($array[$i]);
     ++$i;
-}
+} // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = iterator_count(new ArrayIterator($array));
@@ -150,10 +150,10 @@ while ($size > $i) { // Compliant
  * DO WHILE STATEMENTS // RIGHT OPERAND
  */
 $i = 0;
-do { // NOK {{Avoid getting the size of the collection in the loop}}
+do {
     var_dump($array[$i]);
     ++$i;
-} while ($i < count($array));
+} while ($i < count($array)); // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = count($array);
@@ -163,10 +163,10 @@ do {
 } while ($i < $size); // Compliant
 
 $i = 0;
-do { // NOK {{Avoid getting the size of the collection in the loop}}
+do {
     var_dump($array[$i]);
     ++$i;
-} while ($i < sizeof($array));
+} while ($i < sizeof($array)); // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = sizeof($array);
@@ -176,10 +176,10 @@ do {
 } while ($i < $size); // Compliant
 
 $i = 0;
-do { // NOK {{Avoid getting the size of the collection in the loop}}
+do {
     var_dump($array[$i]);
     ++$i;
-} while ($i < iterator_count(new ArrayIterator($array)));
+} while ($i < iterator_count(new ArrayIterator($array))); // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = iterator_count(new ArrayIterator($array));
@@ -192,10 +192,10 @@ do {
  * DO WHILE STATEMENTS // LEFT OPERAND
  */
 $i = 0;
-do { // NOK {{Avoid getting the size of the collection in the loop}}
+do {
     var_dump($array[$i]);
     ++$i;
-} while (count($array) > $i);
+} while (count($array) > $i); // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = count($array);
@@ -205,10 +205,10 @@ do {
 } while ($size > $i); // Compliant
 
 $i = 0;
-do { // NOK {{Avoid getting the size of the collection in the loop}}
+do {
     var_dump($array[$i]);
     ++$i;
-} while (sizeof($array) > $i);
+} while (sizeof($array) > $i); // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = sizeof($array);
@@ -218,10 +218,10 @@ do {
 } while ($size > $i); // Compliant
 
 $i = 0;
-do { // NOK {{Avoid getting the size of the collection in the loop}}
+do {
     var_dump($array[$i]);
     ++$i;
-} while (iterator_count(new ArrayIterator($array)) > $i);
+} while (iterator_count(new ArrayIterator($array)) > $i); // NOK {{Avoid getting the size of the collection in the loop}}
 
 $i = 0;
 $size = iterator_count(new ArrayIterator($array));

@@ -7,21 +7,14 @@ function somme()
     $GLOBALS['b'] = $GLOBALS['a'] + $GLOBALS['b'];
 } // NOK {{Prefer local variables to globals}}
 
-somme();
-echo $b;
-
 function somme2()
 {
     global $a, $b;
-    $b = $a + $b;
+    $c = $a + $b;
 } // NOK {{Prefer local variables to globals}}
 
-somme2();
-echo $b;
-
-function somme3($a, $b) // Compliant
+function somme3($c, $d) // Compliant
 {
-    return $a + $b;
+    $e = $c + $d;
+    return ++$e;
 }
-
-echo somme3($a, $b);

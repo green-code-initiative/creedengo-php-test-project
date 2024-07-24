@@ -1,8 +1,8 @@
 <?php
 
-$sql1 = 'SELECT * FROM'; // NOK {{Don't use the query SELECT * FROM}}
-$sql2 = 'SeLeCt DiStInCt * FrOm'; // NOK {{Don't use the query SELECT * FROM}}
-$sql3 = 'select name from';
+$sql1 = 'SELECT * FROM toto'; // NOK {{Don't use the query SELECT * FROM}}
+$sql2 = 'SeLeCt DiStInCt * FrOm tutu'; // NOK {{Don't use the query SELECT * FROM}}
+$sql3 = 'select name from titi';
 
 class AvoidFullSQLRequest
 {

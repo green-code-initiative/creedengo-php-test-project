@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.ecocode</groupId>
-    <artifactId>ecocode-php-plugin-test-project</artifactId>
+    <artifactId>creedengo-php-plugin-test-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>ecoCode PHP Sonar Plugin Test Project</name>
+    <name>creedengo PHP Sonar Plugin Test Project</name>
 
     <properties>
         <encoding>UTF-8</encoding>
@@ -15,7 +15,6 @@
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
         <sonar.sources>src</sonar.sources>
-
     </properties>
 
 </project>

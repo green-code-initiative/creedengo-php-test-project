@@ -18,7 +18,7 @@ Step 2 : send Sonar metrics to local SonarQube
 ---
 
 ```sh
-./tool_send_to_sonar.sh MY_SONAR_TOKEN
+./tool_send_to_sonar.sh MY_SONAR_PORT MY_SONAR_TOKEN
 
 or
 
